@@ -1,0 +1,48 @@
+{
+    "messages": [
+      {
+        "text": "I love pepperoni pizza 🍕",
+        "sentBy": "Billy"
+      },
+      {
+        "text": "Hello World! 🌏",
+        "sentBy": "Chris"
+      },
+      {
+        "text": "Hi there 🙋 how are you?",
+        "sentBy": "Courtney"
+      },
+      {
+        "text": "I love pepperoni pizza 🍕 1",
+        "sentBy": "Billy"
+      },
+      {
+        "text": "Hello World! 🌏 2",
+        "sentBy": "Chris"
+      }
+    ]
+  }
+  
+
+
+  //Structure
+  const companyHiera = [
+    {
+      name:"A",
+      title:"CEO",
+      reportedTo:null
+    },
+    {
+      name:"B",
+      title:"VP",
+      reportedTo:"A"
+    },
+    {
+      name:"C",
+      title:"Manager",
+      reportedTo:"B"
+    }
+  ]
+  
+  const arr = [[1,2,3], 2, [6,4]]; => [1,2,3,2,6,4]
+  
