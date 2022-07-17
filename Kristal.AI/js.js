@@ -1,6 +1,21 @@
 // The solution could be Proxy the object in here
 
-function typecheck(obj) {}
+function typecheck(obj) {
+  obj = new Proxy(obj, {
+    get(obj, phrase) {
+      // intercept reading a property from dictionary
+      if (phrase in obj) {
+        // if we have it in the dictionary
+        console.log("Proxy", phrase.split("_"));
+        return obj[phrase]; // return the translation
+      } else {
+        // otherwise, return the non-translated phrase
+        return phrase;
+      }
+    },
+  });
+  return obj;
+}
 
 let obj = {
   name_string: "Ranga Komarthi",

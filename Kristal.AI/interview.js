@@ -1,67 +1,82 @@
-import React, { useState } from 'react';
+import React, { Component } from "react";
 
-const Counter = (props) => {
-  const [mins, setMins] = useState('');
-  const [secs, setSecs] = useState('');
-  // const timer = React.createRef('');
-
-
-  5: 40
-  const startTimer = () => {
-    // timer = setInterval(() => {
-      //if (secs > 0){
-        //   setSecs(--secs);
-      }else if(mins > 0 && secs === 0){
-        setSecs(60);  
-        setMins(--mins);
-      }else if(mins === 0 && secs === 0){
-        clearInterval(timer);
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { mins: "", seconds: "" };
+  }
+  onStart = (type) => {
+    if (this.state.seconds <= 1) {
+      if (this.state.mins > 0) {
+        this.setState({ seconds: 60, mins: this.state.mins - 1 });
+        return;
+      } else if (this.state.mins === 0 && this.state.seconds > 0) {
+        this.setState({ seconds: this.state.seconds - 1 });
+        return;
+      } else {
+        clearInterval(this.f);
+        return;
       }
-
-    
-    // }, 1000);
+    }
+    this.setState({ seconds: this.state.seconds - 1 });
   };
-
-  const pauseResumeTimer = () => {};
-
-  const resetTimer = () => {
-    setMins('');
-    setSecs('');
-    clearInterval(timer);
+  timer = () => {
+    this.f = setInterval(this.onStart, 1000, "secs");
+    document.getElementById("btn").disabled = true;
   };
+  onPause = () => {
+    clearInterval(this.f);
+  };
+  onReset = () => {
+    clearInterval(this.f);
+    document.getElementById("btn").disabled = false;
 
-  return (
-    <>
+    this.setState({ seconds: 0 });
+  };
+  onMinsChange = (e) => {
+    e.preventDefault();
+    if (!isNaN(parseInt(e.target.value, 10))) {
+      this.setState((state, props) => ({
+        mins: parseInt(e.target.value, 10),
+      }));
+    }
+  };
+  onSecondsChange = (e) => {
+    e.preventDefault();
+    if (!isNaN(parseInt(e.target.value, 10))) {
+      this.setState({ seconds: parseInt(e.target.value, 10) });
+      if (this.state.mins === "") {
+        this.setState({ mins: 0 });
+      }
+    }
+  };
+  render() {
+    const { mins, seconds } = this.state;
+    return (
       <div>
+        <h1>
+          {mins && mins}: {typeof seconds === "number" && seconds}
+        </h1>
+
         <div>
-          <span>
-            Timer: {mins && mins}: {secs && secs}
-          </span>
+          <br />
+          <input type="number" value={mins} onChange={this.onMinsChange} />
+          <input
+            type="number"
+            value={seconds}
+            onChange={this.onSecondsChange}
+          />
         </div>
         <br />
-        <input
-          type="number"
-          value={mins}
-          onChange={(e) => {
-            setMins(e.target.value);
-          }}
-        />
-        <input
-          type="number"
-          value={secs}
-          onChange={(e) => {
-            setSecs(e.target.value);
-          }}
-        />
+
+        <button id="btn" onClick={this.timer}>
+          Start
+        </button>
+        <button onClick={this.onPause}>Stop</button>
+        <button onClick={this.onReset}>Reset</button>
       </div>
-      <br />
-      <div>
-        <button onClick={startTimer}>Start</button>
-        <button>Pause/Resume</button>
-        <button onClick={resetTimer}>Reset</button>
-      </div>
-    </>
-  );
-};
+    );
+  }
+}
 
 export default Counter;
