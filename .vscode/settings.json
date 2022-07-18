@@ -8,6 +8,10 @@
     "**/AMPCUS": true,
     "**/Tesco": true,
     "**/Imanage": true,
-    "crimson.*": true
+    "**/Crimson": true,
+    "**/LeadSquared": true,
+    "**/Kristal.AI": true,
+    "**/Monster": true,
+    "**/Brillio": true
   }
 }
