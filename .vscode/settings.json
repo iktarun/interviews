@@ -1,18 +1,18 @@
 {
   // The following will hide the js and map files in the editor
   "files.exclude": {
-    "**/Nurture.Farm": true,
-    "**/uptycs": true,
-    "**/vyapar": true,
-    "**/Prudential": true,
-    "**/AMPCUS": true,
-    "**/Tesco": true,
-    "**/Imanage": true,
-    "**/Crimson": true,
-    "**/LeadSquared": true,
-    "**/Kristal.AI": true,
-    "**/Monster": true,
-    "**/Brillio": true
+    // "**/Nurture.Farm": true,
+    // "**/uptycs": true,
+    // "**/vyapar": true,
+    // "**/Prudential": true,
+    // "**/AMPCUS": true,
+    // "**/Tesco": true,
+    // "**/Imanage": true,
+    // "**/Crimson": true,
+    // "**/LeadSquared": true,
+    // "**/Kristal.AI": true,
+    // "**/Monster": true,
+    // "**/Brillio": true
     // "**/ViaCom": true,
     // "**/JIO": true
   }

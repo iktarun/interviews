@@ -64,7 +64,7 @@ Ans: Class based one does not function one
     
     
     //Prototypal inheritance
-    //this object
+    //this object, we need to create inhertiance like class based one using Prototypal inhetance
     
     
     function Parent(name, type){
@@ -86,6 +86,36 @@ Ans: Class based one does not function one
      
     }
     
+
+    //Solution of the above problem
+
+    function Parent(name, type){
+      this.name = "Parent";
+    this.type = type;
+  }
+  
+  Parent.prototype.printName = function(){
+      console.log(this.name);
+  }
+  
+  Parent.prototype.printType = function(){
+      console.log(this.type);
+  }
+  
+  function Child(name, type){
+      Parent.call(this, name, type);
+      this.name = name;
+  }
+  Child.prototype = Object.create(Parent.prototype);
+  
+  let o = new Child("Child", "Testing");
+  o.printType();
+  
+  console.log(o)
+  
+  
+
+  /////////////////////////////////////////////////
     
     useEffect(function(){
         
