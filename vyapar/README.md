@@ -3,9 +3,7 @@
 # Round1 - Technical
 
 - Shallow Copy/Deep Copy
-  QUESTION 1:
-
----
+  ## QUESTION 1
 
 Consider the following
 
@@ -15,7 +13,7 @@ A = [4,5,6]
 
 What will be output if we print B?
 
-## QUESTION 2:
+## QUESTION 2
 
 Consider the following
 
