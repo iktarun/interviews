@@ -6,7 +6,7 @@
   <img src="https://github.com/iktarun/interviews/blob/main/Interview_img.jpg?raw=true" width="800" height="400">
 </p
 
-# Important Links for learning
+<b> Important Links for learning </b>
 
 # SDE Sheet GKG
 
