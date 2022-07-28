@@ -1,6 +1,6 @@
-# Steps to run the program
+# Round1 - Fair Caluculator Assignment
 
-## Depedencies
+## Steps to run the program Depedencies
 
 1. npm i readline-sync
 
