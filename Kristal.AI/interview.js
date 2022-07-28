@@ -1,82 +1,43 @@
-import React, { Component } from "react";
+// The solution could be Proxy the object in here
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { mins: "", seconds: "" };
-  }
-  onStart = (type) => {
-    if (this.state.seconds <= 1) {
-      if (this.state.mins > 0) {
-        this.setState({ seconds: 60, mins: this.state.mins - 1 });
-        return;
-      } else if (this.state.mins === 0 && this.state.seconds > 0) {
-        this.setState({ seconds: this.state.seconds - 1 });
-        return;
+function typecheck(obj) {
+  obj = new Proxy(obj, {
+    get(obj, phrase) {
+      // intercept reading a property from dictionary
+      if (phrase in obj) {
+        // if we have it in the dictionary
+        console.log("Proxy", phrase.split("_"));
+        return obj[phrase]; // return the translation
       } else {
-        clearInterval(this.f);
-        return;
+        // otherwise, return the non-translated phrase
+        return phrase;
       }
-    }
-    this.setState({ seconds: this.state.seconds - 1 });
-  };
-  timer = () => {
-    this.f = setInterval(this.onStart, 1000, "secs");
-    document.getElementById("btn").disabled = true;
-  };
-  onPause = () => {
-    clearInterval(this.f);
-  };
-  onReset = () => {
-    clearInterval(this.f);
-    document.getElementById("btn").disabled = false;
-
-    this.setState({ seconds: 0 });
-  };
-  onMinsChange = (e) => {
-    e.preventDefault();
-    if (!isNaN(parseInt(e.target.value, 10))) {
-      this.setState((state, props) => ({
-        mins: parseInt(e.target.value, 10),
-      }));
-    }
-  };
-  onSecondsChange = (e) => {
-    e.preventDefault();
-    if (!isNaN(parseInt(e.target.value, 10))) {
-      this.setState({ seconds: parseInt(e.target.value, 10) });
-      if (this.state.mins === "") {
-        this.setState({ mins: 0 });
-      }
-    }
-  };
-  render() {
-    const { mins, seconds } = this.state;
-    return (
-      <div>
-        <h1>
-          {mins && mins}: {typeof seconds === "number" && seconds}
-        </h1>
-
-        <div>
-          <br />
-          <input type="number" value={mins} onChange={this.onMinsChange} />
-          <input
-            type="number"
-            value={seconds}
-            onChange={this.onSecondsChange}
-          />
-        </div>
-        <br />
-
-        <button id="btn" onClick={this.timer}>
-          Start
-        </button>
-        <button onClick={this.onPause}>Stop</button>
-        <button onClick={this.onReset}>Reset</button>
-      </div>
-    );
-  }
+    },
+  });
+  return obj;
 }
 
-export default Counter;
+let obj = {
+  name_string: "Ranga Komarthi",
+  price_float: 12.0,
+  age_number: 20,
+  am_boolean: true,
+  units_int: 20,
+};
+
+/* name_string = true -> throw Error
+modifiedObject.name_string -> throw error */
+let obj1 = {
+  name_string: true,
+  price_float: 12,
+  age_number: "20",
+  am_boolean: true,
+  units_int: 20,
+};
+
+const modifiedObject = typecheck(object);
+modifiedObject.name_string;
+
+/* modifiedObject.name_string = "Ranga Komarthi" */
+
+//Q. Create a function which will return the object based on the key vand its type
