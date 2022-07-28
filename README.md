@@ -1,3 +1,11 @@
+# javascript interviews experience
+
+<b>Curated list of company interview questions</b>
+
+<p align="center">
+  <img src="https://github.com/iktarun/interviews/blob/main/Interview_img.jpg?raw=true" width="800" height="400">
+</p
+
 # SDE Sheet GKG
 
 https://www.geeksforgeeks.org/sde-sheet-a-complete-guide-for-sde-preparation/?ref=ghb
