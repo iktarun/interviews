@@ -32,6 +32,7 @@
   - CSS selectors
   - Pseudo classes
 
-- Round3 - Hiring Manager
-  - Whay you do? roles responsibilites
-  - STAR round questions
+# Round3 - Hiring Manager
+
+- Whay you do? roles responsibilites
+- STAR round questions
